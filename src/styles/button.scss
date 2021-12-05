@@ -1,0 +1,18 @@
+.button {
+  font-size: inherit;
+  position: relative;
+  display: block;
+  padding: 5px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.4s, transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  color: black;
+  border: 1px solid #ff006a;
+  border-radius: 0;
+  background: transparent;
+
+  &:hover {
+    color: #ff006a;
+    border-color: black;
+  }
+}

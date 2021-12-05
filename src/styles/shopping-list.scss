@@ -1,0 +1,82 @@
+.shopping-list {
+  width: 400px;
+  padding: 10px 20px;
+  border: 1px solid black;
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__head-title {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__head-subtitles {
+    display: grid;
+    padding-bottom: 3px;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  &__head-subtitle {
+    font-style: italic;
+  }
+
+  &__body {
+    padding: 15px 0;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+  }
+
+  &__item {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2fr 1fr;
+
+    &.is-completed {
+      text-decoration: line-through;
+    }
+  }
+
+  &__item-name {
+  }
+
+  &__item-price {
+  }
+
+  &__item-info {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  &__footer {
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+  }
+
+  &__total-price-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  &__total-price-title {
+    font-style: italic;
+  }
+
+  &__total-price-value {
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+
+  &__form-inputs {
+    display: flex;
+    column-gap: 5px;
+  }
+}

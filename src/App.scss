@@ -1,0 +1,11 @@
+@import "styles/button";
+@import "styles/input";
+@import "styles/shopping-list";
+
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+

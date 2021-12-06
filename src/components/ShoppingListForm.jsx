@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Button from './UI/Button';
 import Input from './UI/Input';
 
-const ShoppingListForm = ({create}) => {
+const ShoppingListForm = ({addItem}) => {
   const [item, setItem] = useState({name: '', price: ''});
 
   const addNewItem = e => {
@@ -10,7 +10,7 @@ const ShoppingListForm = ({create}) => {
     const newItem = {...item, id: Date.now()};
 
     if (newItem.name && newItem.price) {
-      create(newItem);
+      addItem(newItem);
     }
   };
 
@@ -24,6 +24,7 @@ const ShoppingListForm = ({create}) => {
         />
         <Input
           type="number"
+          onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()}
           onChange={e => setItem({...item, price: e.target.value})}
           value={item.price}
           placeholder="Цена"
@@ -35,6 +36,5 @@ const ShoppingListForm = ({create}) => {
     </form>
   );
 };
-
 
 export default ShoppingListForm;

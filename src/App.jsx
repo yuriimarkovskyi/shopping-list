@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import ShoppingList from './components/ShoppingList';
 import './App.scss';
+import ShoppingList from './components/ShoppingList';
 
 function App() {
   const [items, setItems] = useState([
@@ -9,20 +9,15 @@ function App() {
     {id: 3, name: 'Салфетки', price: 35},
   ]);
 
-  const addItem = newItem => {
-    setItems([...items, newItem]);
-  };
-
-  const removeItem = item => {
-    setItems(items.filter(e => e.id !== item.id));
-  };
+  const addItem = newItem => setItems([...items, newItem]);
+  const removeItem = item => setItems(items.filter(e => e.id !== item.id));
 
   return (
     <div className="App">
       <ShoppingList
-        remove={removeItem}
-        create={addItem}
         items={items}
+        addItem={addItem}
+        removeItem={removeItem}
       />
     </div>
   );

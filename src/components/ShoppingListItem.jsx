@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import trashIcon from '../images/trash.svg';
 
-const ShoppingListItem = ({item, remove}) => {
+const ShoppingListItem = ({item, removeItem}) => {
   const [stateItem, setStateItem] = useState(false);
 
-  function isCompleted() {
-    setStateItem(prevState => !prevState);
-  }
+  const isCompleted = () => setStateItem(prevState => !prevState);
 
   return (
     <div className={stateItem ? `shopping-list__item is-completed` : 'shopping-list__item'}>
@@ -18,7 +16,7 @@ const ShoppingListItem = ({item, remove}) => {
           {!item.price ? 0 : item.price} ₴
         </p>
         <input onClick={isCompleted} type="checkbox"/>
-        <img onClick={() => remove(item)} src={trashIcon} alt=""/>
+        <img onClick={() => removeItem(item)} src={trashIcon} alt=""/>
       </div>
     </div>
   );

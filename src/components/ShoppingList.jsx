@@ -2,22 +2,20 @@ import React from 'react';
 import ShoppingListItem from './ShoppingListItem';
 import ShoppingListForm from './ShoppingListForm';
 
-const ShoppingList = ({items, remove, create}) => {
+const ShoppingList = ({items, addItem, removeItem}) => {
   return (
     <div className="shopping-list">
 
       <div className="shopping-list__head">
         <h2 className="shopping-list__head-title">
-          {!items.length
-            ? 'Список покупок пуст'
-            : 'Список покупок'}
+          {!items.length ? 'Список покупок пуст' : 'Список покупок'}
         </h2>
         <div className="shopping-list__head-subtitles">
           <p className="shopping-list__head-subtitle">
-            Name
+            Товар
           </p>
           <p className="shopping-list__head-subtitle">
-            Price
+            Цена
           </p>
         </div>
       </div>
@@ -26,8 +24,8 @@ const ShoppingList = ({items, remove, create}) => {
         {items.map(item => (
           <ShoppingListItem
             key={item.id}
-            remove={remove}
             item={item}
+            removeItem={removeItem}
           />),
         )}
       </div>
@@ -35,7 +33,7 @@ const ShoppingList = ({items, remove, create}) => {
       <div className="shopping-list__footer">
         <div className="shopping-list__total-price-wrapper">
           <p className="shopping-list__total-price-title">
-            Total price
+            Общая сумма покупок
           </p>
           <p className="shopping-list__total-price-value">
             {items.reduce((accum, curr) => accum + Number(curr.price), 0)} ₴
@@ -43,7 +41,7 @@ const ShoppingList = ({items, remove, create}) => {
         </div>
       </div>
 
-      <ShoppingListForm create={create}/>
+      <ShoppingListForm addItem={addItem}/>
 
     </div>
   );

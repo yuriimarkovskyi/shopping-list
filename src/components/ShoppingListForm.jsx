@@ -1,38 +1,43 @@
-import React, {useState} from 'react';
+import React, {useRef} from 'react';
 import Button from './UI/Button';
 import Input from './UI/Input';
+import {useDispatch} from 'react-redux';
+import {addItemAction} from '../store/itemsReducer';
 
-const ShoppingListForm = ({addItem}) => {
-  const [item, setItem] = useState({name: '', price: ''});
+const ShoppingListForm = () => {
+  const inputNameRef = useRef();
+  const inputNumberRef = useRef();
+  const dispatch = useDispatch();
 
-  const addNewItem = e => {
+  const addItem = (e) => {
     e.preventDefault();
-    const newItem = {...item, id: Date.now()};
 
-    if (newItem.name && newItem.price) {
-      addItem(newItem);
-    }
+    const item = {
+      id: Date.now(),
+      name: inputNameRef.current.value,
+      price: inputNumberRef.current.value,
+    };
+
+    dispatch(addItemAction(item));
   };
 
   return (
     <form className="shopping-list__form">
       <div className="shopping-list__form-inputs">
         <Input
-          onChange={e => setItem({...item, name: e.target.value})}
-          value={item.name}
+          ref={inputNameRef}
           placeholder="Товар"
         />
         <Input
           type="number"
           onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()}
-          onChange={e => setItem({...item, price: e.target.value})}
-          value={item.price}
+          ref={inputNumberRef}
           placeholder="Цена"
         />
+        <Button onClick={addItem} className="button">
+          Add item
+        </Button>
       </div>
-      <Button onClick={addNewItem} className="button">
-        Add item
-      </Button>
     </form>
   );
 };

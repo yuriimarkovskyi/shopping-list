@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import trashIcon from '../images/trash.svg';
+import {useDispatch} from 'react-redux';
+import {completeItemAction, removeItemAction} from '../store/itemsReducer';
 
-const ShoppingListItem = ({item, removeItem}) => {
-  const [stateItem, setStateItem] = useState(false);
+const ShoppingListItem = ({item}) => {
+  const dispatch = useDispatch();
 
-  const isCompleted = () => setStateItem(prevState => !prevState);
+  const completeItem = () => {
+    dispatch(completeItemAction(item));
+  };
+
+  const removeItem = () => {
+    dispatch(removeItemAction(item.id));
+  };
 
   return (
-    <div className={stateItem ? `shopping-list__item is-completed` : 'shopping-list__item'}>
+    <div onClick={completeItem} className={item.completed ? `shopping-list__item is-completed` : 'shopping-list__item'}>
       <p className="shopping-list__item-name">
         {item.name}
       </p>
@@ -15,8 +23,7 @@ const ShoppingListItem = ({item, removeItem}) => {
         <p className="shopping-list__item-price">
           {!item.price ? 0 : item.price} ₴
         </p>
-        <input onClick={isCompleted} type="checkbox"/>
-        <img onClick={() => removeItem(item)} src={trashIcon} alt=""/>
+        <img onClick={removeItem} src={trashIcon} alt=""/>
       </div>
     </div>
   );

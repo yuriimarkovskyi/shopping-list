@@ -2,7 +2,7 @@ import React from 'react';
 import ShoppingListItem from './ShoppingListItem';
 import ShoppingListForm from './ShoppingListForm';
 
-const ShoppingList = ({items, addItem, removeItem}) => {
+const ShoppingList = ({items}) => {
   return (
     <div className="shopping-list">
 
@@ -10,6 +10,9 @@ const ShoppingList = ({items, addItem, removeItem}) => {
         <h2 className="shopping-list__head-title">
           {!items.length ? 'Список покупок пуст' : 'Список покупок'}
         </h2>
+
+        <ShoppingListForm/>
+
         <div className="shopping-list__head-subtitles">
           <p className="shopping-list__head-subtitle">
             Товар
@@ -25,7 +28,6 @@ const ShoppingList = ({items, addItem, removeItem}) => {
           <ShoppingListItem
             key={item.id}
             item={item}
-            removeItem={removeItem}
           />),
         )}
       </div>
@@ -40,8 +42,6 @@ const ShoppingList = ({items, addItem, removeItem}) => {
           </p>
         </div>
       </div>
-
-      <ShoppingListForm addItem={addItem}/>
 
     </div>
   );

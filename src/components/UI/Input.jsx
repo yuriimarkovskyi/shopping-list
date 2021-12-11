@@ -1,6 +1,6 @@
 import React, {forwardRef} from 'react';
 
-const Input = (ref, props) => {
+const Input = (props, ref) => {
   return (
     <input
       className="input"

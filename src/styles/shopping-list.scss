@@ -1,42 +1,42 @@
 .shopping-list {
+  position: relative;
   width: 400px;
-  padding: 10px 20px;
+  padding: 10px 20px 50px;
   border: 1px solid black;
 
-  &__head {
-    display: flex;
-    flex-direction: column;
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
   }
 
-  &__head-title {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  &__head-subtitles {
-    display: grid;
-    padding-bottom: 3px;
-    grid-template-columns: 2fr 1fr;
-  }
-
-  &__head-subtitle {
+  &__subtitle {
     font-style: italic;
   }
 
   &__body {
-    padding: 15px 0;
-    border-top: 1px solid gray;
+    padding: 16px 0;
     border-bottom: 1px solid gray;
   }
 
   &__item {
-    display: grid;
+    display: flex;
     align-items: center;
-    grid-template-columns: 2fr 1fr;
+    justify-content: space-between;
 
     &.is-completed {
       text-decoration: line-through;
+      color: #b9b9be;
     }
+  }
+
+  &__item-left-part {
+  }
+
+  &__item-right-part {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
   &__item-name {
@@ -45,38 +45,49 @@
   &__item-price {
   }
 
-  &__item-info {
-    display: grid;
-    align-items: center;
-    grid-template-columns: 2fr 1fr 1fr;
+  &__item-button {
+    border: none;
+    background: transparent;
   }
 
   &__footer {
-    margin-bottom: 5px;
-    padding-bottom: 3px;
+    padding-top: 30px;
+    padding-right: 70px;
   }
 
   &__total-price-wrapper {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__total-price-title {
+    font-weight: bold;
     font-style: italic;
   }
 
   &__total-price-value {
   }
 
-  &__form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    row-gap: 5px;
+  &__button {
+    position: absolute;
+    right: 15px;
+    bottom: 30px;
   }
 
-  &__form-inputs {
+  &__form {
     display: flex;
-    column-gap: 5px;
+    flex-direction: column;
+  }
+
+  &__form-input {
+    height: 50px;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__form-button {
+
   }
 }

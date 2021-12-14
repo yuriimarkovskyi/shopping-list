@@ -20,7 +20,6 @@ export const itemsReducer = (state = defaultState, action) => {
 
     case COMPLETE_ITEM:
       const index = state.items.findIndex(item => item.id === action.payload.id);
-      console.log(index);
       const newArray = [...state.items];
 
       newArray[index].completed = !newArray[index].completed;

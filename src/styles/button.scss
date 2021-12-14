@@ -1,18 +1,25 @@
 .button {
-  font-size: inherit;
-  position: relative;
-  display: block;
-  padding: 5px 20px;
-  cursor: pointer;
-  user-select: none;
-  transition: color 0.4s, transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  color: black;
-  border: 1px solid #ff006a;
-  border-radius: 0;
-  background: transparent;
+  transition: 0.4s;
+  border: 2px solid #515cc6;
+  outline: none;
+  background: #ffffff;
+
+  &_primary {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+  }
+
+  &_secondary {
+    height: 50px;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
 
   &:hover {
-    color: #ff006a;
-    border-color: black;
+    border: 2px solid #ffffff;
+    background: #515cc6;
   }
 }

@@ -12,7 +12,7 @@ const Modal = ({children}) => {
   };
 
   return (
-    <div className={`modal ${visible ? 'is-active' : null}`}>
+    <div className={`modal ${visible ? 'is-active' : ''}`}>
       <div className="modal__content">
         {children}
 

@@ -11,7 +11,7 @@ const ShoppingListForm = () => {
   const inputNumberRef = useRef();
   const dispatch = useDispatch();
 
-  const addItem = (e) => {
+  const handleAddItem = (e) => {
     e.preventDefault();
 
     const item = {
@@ -46,8 +46,8 @@ const ShoppingListForm = () => {
       />
 
       <Button
-        onClick={addItem}
-        className="button_secondary">
+        className="button_secondary"
+        onClick={handleAddItem}>
 
         Добавить
       </Button>

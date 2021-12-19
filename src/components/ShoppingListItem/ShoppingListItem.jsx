@@ -3,21 +3,21 @@ import './shopping-list-item.scss';
 import removeIcon from '../../images/remove-icon.svg';
 import {useDispatch} from 'react-redux';
 import {completeItemAction, removeItemAction} from '../../store/itemsReducer';
-import Button from '../UI/Button/Button';
+import classNames from 'classnames';
 
 const ShoppingListItem = ({item}) => {
   const dispatch = useDispatch();
 
-  const completeItem = () => {
+  const handleCompleteItem = () => {
     dispatch(completeItemAction(item));
   };
 
-  const removeItem = () => {
+  const handleRemoveItem = () => {
     dispatch(removeItemAction(item.id));
   };
 
   return (
-    <div className={`shopping-list-item ${item.completed ? `is-completed` : ''}`}>
+    <div className={classNames('shopping-list-item', item.completed ? `is-completed` : '')}>
       <div className="shopping-list-item__left-side">
 
         <p className="shopping-list-item__name">
@@ -33,13 +33,13 @@ const ShoppingListItem = ({item}) => {
 
         <input
           className="shopping-list-item__checkbox"
-          onClick={completeItem}
+          onClick={handleCompleteItem}
           type="checkbox"
           defaultChecked={item.completed && true}
         />
 
         <button className="shopping-list-item__button">
-          <img onClick={removeItem} src={removeIcon} alt=""/>
+          <img onClick={handleRemoveItem} src={removeIcon} alt=""/>
         </button>
 
       </div>

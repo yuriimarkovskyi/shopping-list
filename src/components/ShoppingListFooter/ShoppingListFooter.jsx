@@ -11,7 +11,7 @@ const ShoppingListFooter = () => {
   const dispatch = useDispatch();
   const [isHover, setIsHover] = useState(false);
 
-  const showModal = () => {
+  const handleShowModal = () => {
     dispatch(changeVisibilityAction());
   };
 
@@ -35,7 +35,7 @@ const ShoppingListFooter = () => {
       <Button
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        onClick={showModal}
+        onClick={handleShowModal}
         className="shopping-list-footer__button button_primary">
 
         <img src={isHover ? iconAddWhite : iconAddBlack} alt=""/>

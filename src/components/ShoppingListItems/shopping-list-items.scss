@@ -1,0 +1,12 @@
+.shopping-list-items {
+  margin-bottom: 20px;
+
+  &.is-completed {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}

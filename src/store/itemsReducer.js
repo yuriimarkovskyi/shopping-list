@@ -5,7 +5,7 @@ const defaultState = {
     {id: 3, name: 'Салфетки', price: 35, completed: false},
     {id: 4, name: 'Салфетки 2', price: 35, completed: false},
     {id: 5, name: 'Салфетки 3', price: 35, completed: false},
-    {id: 6, name: 'Салфетки 4', price: 35, completed: false},
+    {id: 6, name: 'Салфетки 4', price: 35, completed: true},
   ],
 };
 

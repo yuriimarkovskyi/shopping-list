@@ -1,0 +1,21 @@
+.shopping-list-footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-right: 100px;
+
+  &__price-title {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  &__price-value {
+  }
+
+  &__button {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+  }
+}

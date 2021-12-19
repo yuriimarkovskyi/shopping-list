@@ -1,0 +1,12 @@
+.shopping-list-form {
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    height: 50px;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+}

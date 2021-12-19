@@ -1,0 +1,53 @@
+.shopping-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-enter {
+    transition: .2s;
+    transform: translateX(-150%);
+
+    &-active {
+      transform: translateX(0);
+    }
+  }
+
+  &-exit {
+    transition: .2s;
+    transform: translateX(0);
+
+    &-active {
+      transform: translateX(150%);
+    }
+  }
+
+  &.is-completed {
+    text-decoration: line-through;
+    color: #b9b9be;
+  }
+
+  &__left-side {
+  }
+
+  &__right-side {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__name {
+  }
+
+  &__price {
+  }
+
+  &__checkbox {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__button {
+    border: none;
+    background: transparent;
+  }
+}

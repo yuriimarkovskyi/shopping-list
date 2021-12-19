@@ -1,0 +1,30 @@
+@import "../../../styles/helpers/variables/index";
+
+.button {
+  font-size: 18px;
+  transition: .5s;
+  border: 2px solid $purple;
+  outline: none;
+  background: $white;
+
+  &_primary {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    &:hover {
+      border: 2px solid $white;
+      background: $purple;
+    }
+  }
+
+  &_secondary {
+    height: 50px;
+
+    &:hover {
+      color: $white;
+      border: 2px solid $white;
+      background: $purple;
+    }
+  }
+}

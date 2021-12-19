@@ -1,9 +1,10 @@
 import React, {useRef} from 'react';
+import './shopping-list-form.scss';
 import {useDispatch} from 'react-redux';
-import {addItemAction} from '../store/itemsReducer';
-import {changeVisibilityAction} from '../store/visibleReducer';
-import Button from './UI/Button';
-import Input from './UI/Input';
+import {addItemAction} from '../../store/itemsReducer';
+import {changeVisibilityAction} from '../../store/visibleReducer';
+import Button from '../UI/Button/Button';
+import Input from '../UI/Input/Input';
 
 const ShoppingListForm = () => {
   const inputNameRef = useRef();
@@ -28,24 +29,27 @@ const ShoppingListForm = () => {
   };
 
   return (
-    <form className="shopping-list__form">
+    <form className="shopping-list-form">
 
       <Input
-        className="shopping-list__form-input"
+        className="shopping-list-form__input input"
         ref={inputNameRef}
-        placeholder="Товар"
+        placeholder="Наименование товара"
       />
 
       <Input
-        className="shopping-list__form-input"
+        className="shopping-list-form__input input"
         type="number"
         onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()}
         ref={inputNumberRef}
         placeholder="Цена"
       />
 
-      <Button onClick={addItem} classes={'shopping-list__form-button button button_secondary'}>
-        Add item
+      <Button
+        onClick={addItem}
+        className="button_secondary">
+
+        Добавить
       </Button>
 
     </form>

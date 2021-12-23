@@ -1,9 +1,21 @@
+@import "../../styles/helpers/variables";
+
 .shopping-list-footer {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 30px;
-  padding-right: 100px;
+  padding-top: 15px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $black;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+  }
 
   &__price-title {
     font-weight: bold;
@@ -11,11 +23,5 @@
   }
 
   &__price-value {
-  }
-
-  &__button {
-    position: absolute;
-    top: 15px;
-    right: 10px;
   }
 }

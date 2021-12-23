@@ -12,6 +12,7 @@ const defaultState = {
 const ADD_ITEM = 'ADD_ITEM';
 const COMPLETE_ITEM = 'COMPLETE_ITEM';
 const COMPLETE_ALL_ITEMS = 'COMPLETE_ALL_ITEMS';
+const CLEAR_COMPLETED_ITEMS = 'CLEAR_COMPLETED_ITEMS';
 const REMOVE_ITEM = 'REMOVE_ITEM';
 
 export const itemsReducer = (state = defaultState, action) => {
@@ -32,6 +33,11 @@ export const itemsReducer = (state = defaultState, action) => {
 
       return {...state, items: itemsCompleted};
 
+    case CLEAR_COMPLETED_ITEMS:
+      const itemsUnCompleted = state.items.map(item => item.completed ? {...item, completed: false} : item);
+
+      return {...state, items: itemsUnCompleted};
+
     case REMOVE_ITEM:
       const filteredItems = state.items.filter(item => item.id !== action.payload);
 
@@ -44,5 +50,6 @@ export const itemsReducer = (state = defaultState, action) => {
 
 export const addItemAction = payload => ({type: ADD_ITEM, payload});
 export const completeItemAction = payload => ({type: COMPLETE_ITEM, payload});
-export const completeItemsAction = () => ({type: COMPLETE_ALL_ITEMS});
+export const completeAllItemsAction = () => ({type: COMPLETE_ALL_ITEMS});
+export const clearCompletedItemsAction = () => ({type: CLEAR_COMPLETED_ITEMS});
 export const removeItemAction = payload => ({type: REMOVE_ITEM, payload});

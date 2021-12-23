@@ -1,4 +1,6 @@
 @import "helpers/variables/index";
+@import "./checkbox.scss";
+@import "./label.scss";
 
 .App {
   display: flex;
@@ -15,6 +17,6 @@
 
 body {
   font-family: $font-family-primary;
-  font-size: 18px;
+  font-size: 16px;
 }
 

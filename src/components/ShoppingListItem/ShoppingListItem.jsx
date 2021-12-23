@@ -20,9 +20,15 @@ const ShoppingListItem = ({item}) => {
     <div className={classNames('shopping-list-item', item.completed ? `is-completed` : '')}>
       <div className="shopping-list-item__left-side">
 
-        <p className="shopping-list-item__name">
+        <label className="shopping-list-item__name label">
+          <input
+            className="shopping-list-item__checkbox checkbox"
+            onClick={handleCompleteItem}
+            type="checkbox"
+            defaultChecked={item.completed && true}
+          />
           {item.name}
-        </p>
+        </label>
 
       </div>
       <div className="shopping-list-item__right-side">
@@ -30,13 +36,6 @@ const ShoppingListItem = ({item}) => {
         <p className="shopping-list-item__price">
           {!item.price ? 0 : item.price} ₴
         </p>
-
-        <input
-          className="shopping-list-item__checkbox"
-          onClick={handleCompleteItem}
-          type="checkbox"
-          defaultChecked={item.completed && true}
-        />
 
         <button className="shopping-list-item__button">
           <img onClick={handleRemoveItem} src={removeIcon} alt=""/>

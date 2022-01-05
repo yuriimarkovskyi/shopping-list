@@ -1,7 +1,6 @@
 import React from 'react';
-import './shopping-list-footer.scss';
 import {useSelector} from 'react-redux';
-import ShoppingListButtonsBlock from '../ShoppingListButtonsBlock/ShoppingListButtonsBlock';
+import ShoppingListButtons from './ShoppingListButtons';
 
 const ShoppingListFooter = () => {
   const items = useSelector(state => state.items.items);
@@ -17,7 +16,7 @@ const ShoppingListFooter = () => {
         </p>
       </div>
       <div className="shopping-list-footer__bottom">
-        <ShoppingListButtonsBlock/>
+        <ShoppingListButtons/>
       </div>
     </div>
   );

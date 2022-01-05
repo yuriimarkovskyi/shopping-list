@@ -1,11 +1,10 @@
 import React from 'react';
-import './shopping-list-buttons-block.scss';
-import {clearCompletedItemsAction, completeAllItemsAction} from '../../store/itemsReducer';
 import {useDispatch} from 'react-redux';
-import Button from '../UI/Button/Button';
-import {changeVisibilityAction} from '../../store/visibleReducer';
+import {clearCompletedItemsAction, completeAllItemsAction} from '../store/itemsReducer';
+import {changeVisibilityAction} from '../store/visibleReducer';
+import Button from './UI/Button';
 
-const ShoppingListButtonsBlock = () => {
+const ShoppingListButtons = () => {
   const dispatch = useDispatch();
 
   const handleCompleteAllItems = () => {
@@ -21,8 +20,8 @@ const ShoppingListButtonsBlock = () => {
   };
 
   return (
-    <div className="shopping-list-buttons-block">
-      <div className="shopping-list-buttons-block__left-side">
+    <div className="shopping-list-buttons">
+      <div className="shopping-list-buttons__left-side">
         <Button onClick={handleCompleteAllItems}>
           Complete all
         </Button>
@@ -37,4 +36,4 @@ const ShoppingListButtonsBlock = () => {
   );
 };
 
-export default ShoppingListButtonsBlock;
+export default ShoppingListButtons;

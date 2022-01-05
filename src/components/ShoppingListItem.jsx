@@ -1,9 +1,8 @@
 import React from 'react';
-import './shopping-list-item.scss';
-import removeIcon from '../../images/remove-icon.svg';
-import {useDispatch} from 'react-redux';
-import {completeItemAction, removeItemAction} from '../../store/itemsReducer';
 import classNames from 'classnames';
+import {useDispatch} from 'react-redux';
+import {completeItemAction, removeItemAction} from '../store/itemsReducer';
+import removeIcon from '../images/remove-icon.svg';
 
 const ShoppingListItem = ({item}) => {
   const dispatch = useDispatch();
@@ -20,13 +19,13 @@ const ShoppingListItem = ({item}) => {
     <div className={classNames('shopping-list-item', item.completed ? `is-completed` : '')}>
       <div className="shopping-list-item__left-side">
 
-        <label className="shopping-list-item__name label">
+        <label className="shopping-list-item__name">
           <input
-            className="shopping-list-item__checkbox checkbox"
+            className="shopping-list-item__checkbox"
             onClick={handleCompleteItem}
             type="checkbox"
-            defaultChecked={item.completed && true}
-          />
+            defaultChecked={item.completed}/>
+
           {item.name}
         </label>
 

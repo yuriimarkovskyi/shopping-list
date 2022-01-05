@@ -1,5 +1,4 @@
-import './styles/App.scss';
-import ShoppingList from './components/ShoppingList/ShoppingList';
+import ShoppingList from './components/ShoppingList';
 
 const App = () => {
   return (

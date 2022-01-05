@@ -1,6 +1,5 @@
 import React from 'react';
-import './shopping-list-body.scss';
-import ShoppingListItems from '../ShoppingListItems/ShoppingListItems';
+import ShoppingListItems from './ShoppingListItems';
 
 const ShoppingListBody = () => {
   return (

@@ -1,9 +1,8 @@
 import React from 'react';
-import './shopping-list-items.scss';
-import {useSelector} from 'react-redux';
 import classNames from 'classnames';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
-import ShoppingListItem from '../ShoppingListItem/ShoppingListItem';
+import {useSelector} from 'react-redux';
+import ShoppingListItem from './ShoppingListItem';
 
 const ShoppingListItems = ({isCompleted}) => {
   const items = useSelector(state => state.items.items);
@@ -24,8 +23,7 @@ const ShoppingListItems = ({isCompleted}) => {
             classNames="shopping-list-item">
             <ShoppingListItem
               key={filteredItem.id}
-              item={filteredItem}
-            />
+              item={filteredItem}/>
           </CSSTransition>
         ))}
       </TransitionGroup>

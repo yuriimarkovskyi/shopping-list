@@ -1,9 +1,8 @@
 import React from 'react';
-import './modal.scss';
-import removeIcon from '../../../images/remove-icon.svg';
-import {useDispatch, useSelector} from 'react-redux';
-import {changeVisibilityAction} from '../../../store/visibleReducer';
 import classNames from 'classnames';
+import {useDispatch, useSelector} from 'react-redux';
+import {changeVisibilityAction} from '../../store/visibleReducer';
+import removeIcon from '../../images/remove-icon.svg';
 
 const Modal = ({children}) => {
   const visible = useSelector(state => state.visible.visible);
@@ -37,8 +36,7 @@ const Modal = ({children}) => {
         <img
           className="modal__icon-close"
           onClick={handleCloseModal}
-          src={removeIcon} alt=""
-        />
+          src={removeIcon} alt=""/>
       </div>
     </div>
   );

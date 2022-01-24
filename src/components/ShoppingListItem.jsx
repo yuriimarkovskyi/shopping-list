@@ -1,10 +1,33 @@
 import React from 'react';
-import classNames from 'classnames';
-import {useDispatch} from 'react-redux';
-import {completeItemAction, removeItemAction} from '../store/itemsReducer';
-import removeIcon from '../images/remove-icon.svg';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { completeItemAction, removeItemAction } from '../store/itemsReducer';
+import Input from './UI/Input';
 
-const ShoppingListItem = ({item}) => {
+const StyledShoppingListItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  &.is-completed {
+    text-decoration: line-through;
+  }
+
+  .left-side {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
+  
+  .right-side {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+`;
+
+function ShoppingListItem({ item }) {
   const dispatch = useDispatch();
 
   const handleCompleteItem = () => {
@@ -16,33 +39,35 @@ const ShoppingListItem = ({item}) => {
   };
 
   return (
-    <div className={classNames('shopping-list-item', item.completed ? `is-completed` : '')}>
-      <div className="shopping-list-item__left-side">
-
-        <label className="shopping-list-item__name">
-          <input
-            className="shopping-list-item__checkbox"
-            onClick={handleCompleteItem}
-            type="checkbox"
-            defaultChecked={item.completed}/>
-
-          {item.name}
-        </label>
-
+    <StyledShoppingListItem className={item.completed && 'is-completed'}>
+      <div className="left-side">
+        <Input
+          type="checkbox"
+          defaultChecked={item.completed}
+          onClick={handleCompleteItem}
+        />
+        <p>{item.name}</p>
       </div>
-      <div className="shopping-list-item__right-side">
-
-        <p className="shopping-list-item__price">
-          {!item.price ? 0 : item.price} ₴
-        </p>
-
-        <button className="shopping-list-item__button">
-          <img onClick={handleRemoveItem} src={removeIcon} alt=""/>
-        </button>
-
+      <div className="right-side">
+        <p>{`${item.price} UAH`}</p>
+        <input
+          type="image"
+          src={`${window.location.origin}/images/icons/icon-close.png`}
+          alt=""
+          onClick={handleRemoveItem}
+        />
       </div>
-    </div>
+    </StyledShoppingListItem>
   );
+}
+
+ShoppingListItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 export default ShoppingListItem;

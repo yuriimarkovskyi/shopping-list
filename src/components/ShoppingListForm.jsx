@@ -1,57 +1,63 @@
-import React, {useRef} from 'react';
-import {useDispatch} from 'react-redux';
-import {addItemAction} from '../store/itemsReducer';
-import {changeVisibilityAction} from '../store/visibleReducer';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { addItemAction } from '../store/itemsReducer';
+import { changeVisibilityAction } from '../store/visibleReducer';
 import Button from './UI/Button';
 import Input from './UI/Input';
 
-const ShoppingListForm = () => {
-  const inputNameRef = useRef();
-  const inputNumberRef = useRef();
+const StyledShoppingListForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+`;
+
+function ShoppingListForm() {
   const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState();
+
+  const handleChangeName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleChangePrice = (e) => {
+    setPrice(parseFloat(e.target.value));
+  };
 
   const handleAddItem = (e) => {
     e.preventDefault();
 
     const item = {
       id: Date.now(),
-      name: inputNameRef.current.value,
-      price: inputNumberRef.current.value,
+      name,
+      price,
       completed: false,
     };
-
-    inputNameRef.current.value = '';
-    inputNumberRef.current.value = '';
 
     dispatch(addItemAction(item));
     dispatch(changeVisibilityAction());
   };
 
   return (
-    <form className="shopping-list-form">
-
+    <StyledShoppingListForm>
       <Input
-        className="shopping-list-form__input"
-        type="text"
-        ref={inputNameRef}
-        placeholder="Наименование товара"/>
-
+        value={name}
+        onChange={handleChangeName}
+        placeholder="Товар"
+      />
       <Input
-        className="shopping-list-form__input"
         type="number"
-        onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()}
-        ref={inputNumberRef}
-        placeholder="Цена"/>
-
-      <Button
-        className="button_secondary"
-        onClick={handleAddItem}>
-
-        Добавить
+        value={price}
+        onChange={handleChangePrice}
+        onKeyDown={(e) => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault()}
+        placeholder="Ціна"
+      />
+      <Button onClick={handleAddItem}>
+        Додати
       </Button>
-
-    </form>
+    </StyledShoppingListForm>
   );
-};
+}
 
 export default ShoppingListForm;

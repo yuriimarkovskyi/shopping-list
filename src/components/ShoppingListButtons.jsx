@@ -1,10 +1,22 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import {clearCompletedItemsAction, completeAllItemsAction} from '../store/itemsReducer';
-import {changeVisibilityAction} from '../store/visibleReducer';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { clearCompletedItemsAction, completeAllItemsAction } from '../store/itemsReducer';
+import { changeVisibilityAction } from '../store/visibleReducer';
 import Button from './UI/Button';
 
-const ShoppingListButtons = () => {
+const StyledShoppingListButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+  .left-side {
+    display: flex;
+    column-gap: 5px;
+  }
+`;
+
+function ShoppingListButtons() {
   const dispatch = useDispatch();
 
   const handleCompleteAllItems = () => {
@@ -17,23 +29,24 @@ const ShoppingListButtons = () => {
 
   const handleShowModal = () => {
     dispatch(changeVisibilityAction());
+    console.log('true');
   };
 
   return (
-    <div className="shopping-list-buttons">
-      <div className="shopping-list-buttons__left-side">
+    <StyledShoppingListButtons>
+      <div className="left-side">
         <Button onClick={handleCompleteAllItems}>
-          Complete all
+          Виконати усе
         </Button>
         <Button onClick={handleClearCompletedItemsAction}>
-          Clear completed
+          Очистити виконане
         </Button>
       </div>
       <Button onClick={handleShowModal}>
-        Add item
+        Додати
       </Button>
-    </div>
+    </StyledShoppingListButtons>
   );
-};
+}
 
 export default ShoppingListButtons;

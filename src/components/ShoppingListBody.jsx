@@ -1,13 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 import ShoppingListItems from './ShoppingListItems';
 
-const ShoppingListBody = () => {
+const StyledShoppingListBody = styled.div`
+  padding-bottom: 15px;
+  border-bottom: 1px solid black;
+`;
+
+function ShoppingListBody() {
   return (
-    <div className="shopping-list-body">
-      <ShoppingListItems isCompleted={false}/>
-      <ShoppingListItems isCompleted={true}/>
-    </div>
+    <StyledShoppingListBody>
+      <ShoppingListItems isCompleted={false} />
+      <ShoppingListItems isCompleted />
+    </StyledShoppingListBody>
   );
-};
+}
 
 export default ShoppingListBody;

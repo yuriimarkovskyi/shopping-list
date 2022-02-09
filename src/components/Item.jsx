@@ -27,7 +27,7 @@ const StyledShoppingListItem = styled.div`
   }
 `;
 
-function ShoppingListItem({ item }) {
+function Item({ item }) {
   const dispatch = useDispatch();
 
   const handleCompleteItem = () => {
@@ -61,7 +61,7 @@ function ShoppingListItem({ item }) {
   );
 }
 
-ShoppingListItem.propTypes = {
+Item.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
@@ -70,4 +70,4 @@ ShoppingListItem.propTypes = {
   }).isRequired,
 };
 
-export default ShoppingListItem;
+export default Item;

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Modal from './UI/Modal';
-import ShoppingListBody from './ShoppingListBody';
-import ShoppingListFooter from './ShoppingListFooter';
-import ShoppingListForm from './ShoppingListForm';
+import Body from './Body';
+import Footer from './Footer';
+import Form from './Form';
 
 const StyledShoppingList = styled.div`
   overflow: hidden;
@@ -12,16 +12,16 @@ const StyledShoppingList = styled.div`
   box-shadow: 0 0 10px 5px rgba(34, 60, 80, 0.3);
 `;
 
-function ShoppingList() {
+function List() {
   return (
     <StyledShoppingList>
-      <ShoppingListBody />
-      <ShoppingListFooter />
+      <Body />
+      <Footer />
       <Modal>
-        <ShoppingListForm />
+        <Form />
       </Modal>
     </StyledShoppingList>
   );
 }
 
-export default ShoppingList;
+export default List;

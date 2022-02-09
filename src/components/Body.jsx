@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import ShoppingListItems from './ShoppingListItems';
+import ShoppingListItems from './Items';
 
 const StyledShoppingListBody = styled.div`
   padding-bottom: 15px;
   border-bottom: 1px solid black;
 `;
 
-function ShoppingListBody() {
+function Body() {
   return (
     <StyledShoppingListBody>
       <ShoppingListItems isCompleted={false} />
@@ -16,4 +16,4 @@ function ShoppingListBody() {
   );
 }
 
-export default ShoppingListBody;
+export default Body;

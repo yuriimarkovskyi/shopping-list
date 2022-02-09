@@ -16,7 +16,7 @@ const StyledShoppingListButtons = styled.div`
   }
 `;
 
-function ShoppingListButtons() {
+function Buttons() {
   const dispatch = useDispatch();
 
   const handleCompleteAllItems = () => {
@@ -29,7 +29,6 @@ function ShoppingListButtons() {
 
   const handleShowModal = () => {
     dispatch(changeVisibilityAction());
-    console.log('true');
   };
 
   return (
@@ -49,4 +48,4 @@ function ShoppingListButtons() {
   );
 }
 
-export default ShoppingListButtons;
+export default Buttons;

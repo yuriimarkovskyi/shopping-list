@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import ShoppingListButtons from './ShoppingListButtons';
+import Buttons from './Buttons';
 
 const StyledShoppingListFooter = styled.div`
   position: relative;
@@ -24,7 +24,7 @@ const StyledShoppingListFooter = styled.div`
   }
 `;
 
-function ShoppingListFooter() {
+function Footer() {
   const items = useSelector((state) => state.items.items);
 
   return (
@@ -38,10 +38,10 @@ function ShoppingListFooter() {
         </p>
       </div>
       <div className="bottom">
-        <ShoppingListButtons />
+        <Buttons />
       </div>
     </StyledShoppingListFooter>
   );
 }
 
-export default ShoppingListFooter;
+export default Footer;

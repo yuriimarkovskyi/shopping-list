@@ -3,7 +3,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ShoppingListItem from './ShoppingListItem';
+import Item from './Item';
 
 const StyledShoppingListItems = styled.div`
   margin-bottom: 20px;
@@ -54,7 +54,7 @@ function ShoppingListItems({ isCompleted }) {
             classNames="shopping-list-item"
             timeout={{ enter: 500, exit: 0 }}
           >
-            <ShoppingListItem
+            <Item
               key={filteredItem.id}
               item={filteredItem}
             />

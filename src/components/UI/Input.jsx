@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -9,7 +9,7 @@ const StyledInput = styled.input`
     height: 50px;
     font-size: 18px;
   }
-  
+
   &[type="checkbox"] {
     cursor: pointer;
     border: 1px solid #c0c0c0;
@@ -19,30 +19,25 @@ const StyledInput = styled.input`
   }
 `;
 
-function Input({
-  type, value, onClick, onChange, onKeyDown, placeholder, defaultChecked,
-}) {
-  return (
-    <StyledInput
-      type={type}
-      value={value}
-      onClick={onClick}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-      placeholder={placeholder}
-      defaultChecked={defaultChecked}
-    />
-  );
-}
+const Input = forwardRef(({
+  type,
+  onKeyDown,
+  placeholder,
+  defaultChecked,
+  ...props
+}, ref) => (
+  <StyledInput
+    type={type}
+    onKeyDown={onKeyDown}
+    placeholder={placeholder}
+    defaultChecked={defaultChecked}
+    ref={ref}
+    {...props}
+  />
+));
 
 Input.propTypes = {
   type: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.number.isRequired,
-  ]),
-  onClick: PropTypes.func,
-  onChange: PropTypes.func,
   onKeyDown: PropTypes.func,
   placeholder: PropTypes.string,
   defaultChecked: PropTypes.bool,
@@ -50,9 +45,6 @@ Input.propTypes = {
 
 Input.defaultProps = {
   type: 'text',
-  value: '',
-  onClick: null,
-  onChange: null,
   onKeyDown: null,
   placeholder: null,
   defaultChecked: false,

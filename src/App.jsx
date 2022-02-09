@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ShoppingList from './components/ShoppingList';
+import List from './components/List';
 
 const StyledApp = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const StyledApp = styled.div`
 function App() {
   return (
     <StyledApp>
-      <ShoppingList />
+      <List />
     </StyledApp>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { clearCompletedItemsAction, completeAllItemsAction } from '../store/itemsReducer';
-import { changeVisibilityAction } from '../store/visibleReducer';
+import { changeVisibility } from '../store/visibilitySlice';
 import Button from './UI/Button';
 
 const StyledShoppingListButtons = styled.div`
@@ -27,8 +27,8 @@ function Buttons() {
     dispatch(clearCompletedItemsAction());
   };
 
-  const handleShowModal = () => {
-    dispatch(changeVisibilityAction());
+  const openModal = () => {
+    dispatch(changeVisibility());
   };
 
   return (
@@ -41,7 +41,7 @@ function Buttons() {
           Очистити виконане
         </Button>
       </div>
-      <Button onClick={handleShowModal}>
+      <Button onClick={openModal}>
         Додати
       </Button>
     </StyledShoppingListButtons>

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import Input from './UI/Input';
 import Button from './UI/Button';
 import { addItemAction } from '../store/itemsReducer';
-import { changeVisibilityAction } from '../store/visibleReducer';
+import { changeVisibility } from '../store/visibilitySlice';
 
 const StyledForm = styled.form`
   display: flex;
@@ -33,7 +33,7 @@ function Form() {
     };
 
     dispatch(addItemAction(item));
-    dispatch(changeVisibilityAction());
+    dispatch(changeVisibility());
     reset();
   };
 

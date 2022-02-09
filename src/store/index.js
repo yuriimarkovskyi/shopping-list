@@ -1,11 +1,10 @@
-import { combineReducers, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
 import { itemsReducer } from './itemsReducer';
-import { visibleReducer } from './visibleReducer';
+import visibilitySlice from './visibilitySlice';
 
-const rootReducer = combineReducers({
-  items: itemsReducer,
-  visible: visibleReducer,
+export const store = configureStore({
+  reducer: {
+    items: itemsReducer,
+    visibility: visibilitySlice,
+  },
 });
-
-export const store = createStore(rootReducer, composeWithDevTools());

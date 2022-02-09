@@ -1,9 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 import { store } from './store';
 import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const Global = createGlobalStyle`
   *,
@@ -60,10 +62,9 @@ const Global = createGlobalStyle`
   }
 `;
 
-ReactDOM.render(
+root.render(
   <Provider store={store}>
     <Global />
     <App />
   </Provider>,
-  document.getElementById('root'),
 );

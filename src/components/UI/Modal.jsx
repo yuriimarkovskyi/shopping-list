@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { changeVisibilityAction } from '../../store/visibleReducer';
+import { changeVisibility } from '../../store/visibilitySlice';
+import Button from './Button';
 
 const StyledModal = styled.div`
   position: fixed;
@@ -27,47 +28,48 @@ const StyledModal = styled.div`
     background: white;
   }
   
-  .icon-close {
+  .button-close {
     position: absolute;
     top: 5px;
     right: 5px;
+    border: none;
+    outline: none;
   }
 `;
 
 function Modal({ children }) {
   const dispatch = useDispatch();
-  const visible = useSelector((state) => state.visible.visible);
+  const isVisible = useSelector((state) => state.visibility);
 
-  const handleCloseModal = () => {
-    dispatch(changeVisibilityAction());
+  const closeModal = () => {
+    dispatch(changeVisibility());
   };
 
-  const handleKeyDown = (e) => {
-    if (e.keyCode === 27) {
-      dispatch(changeVisibilityAction());
+  const closeModalKeyboard = (e) => {
+    if ((e.key === 'Escape') && isVisible) {
+      dispatch(changeVisibility());
     }
   };
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keydown', closeModalKeyboard);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keydown', closeModalKeyboard);
     };
   }, []);
 
   return (
-    <StyledModal className={visible && 'is-active'}>
+    <StyledModal className={isVisible ? 'is-active' : ''}>
       <div className="content">
         {children}
-        <input
-          type="image"
-          src={`${window.location.origin}/images/icons/icon-close.png`}
-          alt=""
-          className="icon-close"
-          onClick={handleCloseModal}
-          onKeyDown={handleKeyDown}
-        />
+        <Button
+          className="button-close"
+          onClick={closeModal}
+          onKeyDown={closeModalKeyboard}
+        >
+          &times;
+        </Button>
       </div>
     </StyledModal>
   );

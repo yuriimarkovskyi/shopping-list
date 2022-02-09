@@ -18,10 +18,13 @@ const StyledButton = styled.button`
   }
 `;
 
-function Button({ children, type, onClick }) {
+function Button({
+  children, type, className, onClick,
+}) {
   return (
     <StyledButton
       type={type}
+      className={className}
       onClick={onClick}
     >
       {children}
@@ -32,11 +35,13 @@ function Button({ children, type, onClick }) {
 Button.propTypes = {
   children: PropTypes.string.isRequired,
   type: PropTypes.string,
+  className: PropTypes.string,
   onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
   type: 'button',
+  className: null,
   onClick: null,
 };
 
